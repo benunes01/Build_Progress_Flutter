@@ -25,15 +25,15 @@ class MyApp extends StatelessWidget {
                       40,
                       15,
                       40),
-                  itemCount: valores.length,
+                  itemCount: values.length,
                   itemBuilder: (BuildContext context, int index) {
                     print("$index");
                     return buildProgress(
-                        titulo: '${titulos[valores[index]]}',
-                        conteudo: '${dataAtualizacao[index]}',
-                        detalhesConteudo: '${conteudoDetalhe[valores[index]]}',
+                        title: '${titles[values[index]]}',
+                        content: '${atualizationDate[index]}',
+                        detailsContent: '${detailsContent[values[index]]}',
                         index: index,
-                        valor: valores[index]);
+                        value: values[index]);
                   }),
             ),
           ],
@@ -46,11 +46,11 @@ class MyApp extends StatelessWidget {
 
 
 
-buildTopicoTitulo({String texto}) {
+buildTopicTitle({String text}) {
   return Container(
     alignment: Alignment.centerLeft,
     child: Text(
-      texto,
+      text,
       textAlign: TextAlign.left,
       textDirection: TextDirection.ltr,
       style: TextStyle(
@@ -64,12 +64,12 @@ buildTopicoTitulo({String texto}) {
   );
 }
 
-buildTopicoConteudo({String texto}) {
+buildTopicContent({String text}) {
   return Container(
     margin: EdgeInsets.only(top: 5),
     alignment: Alignment.centerLeft,
     child: Text(
-      texto,
+      text,
       textAlign: TextAlign.left,
       textDirection: TextDirection.ltr,
       style: TextStyle(
@@ -83,12 +83,12 @@ buildTopicoConteudo({String texto}) {
   );
 }
 
-buildDetalhesTopico({String texto}) {
+buildDetailsTopic({String text}) {
   return Container(
     margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
     alignment: Alignment.centerLeft,
     child: Text(
-      texto,
+      text,
       textAlign: TextAlign.left,
       textDirection: TextDirection.ltr,
       style: TextStyle(
@@ -102,11 +102,11 @@ buildDetalhesTopico({String texto}) {
   );
 }
 
-List valores = [1,2,3,4,5];
+List values = [1,2,3,4,5];
 
-List dataAtualizacao = ['Atualizado 20/06', 'Atualizado 24/05','Atualizado 28/04','Atualizado 10/03','Atualizado 20/02','Atualizado 16/01'];
+List atualizationDate = ['Atualizado 20/06', 'Atualizado 24/05','Atualizado 28/04','Atualizado 10/03','Atualizado 20/02','Atualizado 16/01'];
 
-List titulos = [
+List titles = [
   'Recebemos o seu pedido',
   'Poxa, dessa vez não deu :(',
   'Opa! Seu crédito está pré-aprovado',
@@ -119,7 +119,7 @@ List titulos = [
   'Operação finalizada'
 ];
 
-List conteudoDetalhe = [
+List detailsContent = [
   'Estamos analisando o seu pedido para entender as suas necessidades. É possível que nossa equipe entre em contato com você durante esse período.',
   'Infelizmente dessa vez não conseguimos aprovar o seu crédito. Para saber mais detalhes, entre em contato em nossos canais de atendimento.',
   'Nossa equipe identificou muito potencial no seu negócio! A partir de agora vamos trabalhar juntos para enriquecer o seu perfil e te preparar para as melhores opções de crédito,',
@@ -151,11 +151,11 @@ var icons = [
 ];
 
 buildProgress(
-    {String titulo,
-      String conteudo,
-      String detalhesConteudo,
+    {String title,
+      String content,
+      String detailsContent,
       int index,
-      int valor}) {
+      int value}) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -166,7 +166,7 @@ buildProgress(
             width: 60,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: colors[valor],
+              color: colors[value],
             ),
             child: Center(
               child: Container(
@@ -176,7 +176,7 @@ buildProgress(
               ),
             ),
           ),
-          index == valores.length - 1
+          index == values.length - 1
               ? Container()
               : Container(
             height: 110,
@@ -193,9 +193,9 @@ buildProgress(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              buildTopicoTitulo(texto: titulo),
-              buildTopicoConteudo(texto: conteudo),
-              buildDetalhesTopico(texto: detalhesConteudo),
+              buildTopicTitle(text: title),
+              buildTopicContent(text: content),
+              buildDetailsTopic(text: detailsContent),
             ],
           ),
         ),
